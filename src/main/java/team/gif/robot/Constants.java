@@ -91,4 +91,8 @@ public final class Constants {
     public static final class Joystick {
         public static final double DEADBAND = 0.1;
     }
+
+    public static final class BuildABot {
+        public static final double CIM_MOTOR_PERCENT = 0.4;
+    }
 }

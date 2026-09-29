@@ -127,7 +127,7 @@ public class SwerveDrivetrain extends SubsystemBase {
             Robot.pigeon.getRotation2d(),
             getPosition()
         );
-
+/*
         if (Robot.pigeon.getYawRate() < 720) {
             for (String limelightName : limelightNames) {
                 LimelightHelpers.PoseEstimate estimate = LimelightHelpers.getBotPoseEstimate_wpiRed_MegaTag2(limelightName);
@@ -139,6 +139,8 @@ public class SwerveDrivetrain extends SubsystemBase {
                 }
             }
         }
+
+ */
 
         if (debugMode) {
             posePublisher.set(poseEstimator.getEstimatedPosition());

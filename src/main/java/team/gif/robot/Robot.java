@@ -7,15 +7,13 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import team.gif.robot.commands.drivetrain.DriveSwerve;
-import team.gif.robot.subsystems.drivers.Pigeon2_0;
-import team.gif.robot.subsystems.drivers.swerve.SparkMaxDriveMotor;
-import team.gif.robot.subsystems.drivers.swerve.TalonSRXTurnMotorEncoder;
+import team.gif.robot.commands.cim.RunPercent;
+import team.gif.robot.commands.cim.RunPercentJoystick;
+import team.gif.robot.subsystems.CIMMotor;
+import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.drivers.swerve.utilities.SwerveConfiguration;
 import team.gif.robot.subsystems.drivers.swerve.SwerveDrivetrain;
-import team.gif.robot.subsystems.drivers.swerve.TalonFXDriveMotor;
-import team.gif.robot.subsystems.drivers.swerve.TalonFXTurnMotor;
-import team.gif.robot.subsystems.drivers.swerve.CANCoderEncoder;
 
 
 /**
@@ -29,10 +27,14 @@ public class Robot extends TimedRobot {
     private RobotContainer robotContainer;
     public static OI oi;
 
-    public static Pigeon2_0 pigeon;
+    public static Pigeon pigeon;
 
     public static SwerveConfiguration swerveConfig;
     public static SwerveDrivetrain swerveDrive;
+
+    public static LimitSwitch limitSwitch;
+
+    public static CIMMotor cimMotor;
 
     public static UI ui;
 
@@ -49,14 +51,12 @@ public class Robot extends TimedRobot {
         // autonomous chooser on the dashboard.
         robotContainer = new RobotContainer();
 
-        pigeon = new Pigeon2_0(RobotMap.PIGEON_ID);
+        pigeon = new Pigeon(RobotMap.BuildABot.PIGEON_CAN_ID);
 
-//        swerveConfig = new SwerveConfiguration(new RobotMap.Mk4Map(), new Constants.Mk4Constants(), TalonFXDriveMotor::new, TalonFXTurnMotor::new, CANCoderEncoder::new);
-        swerveConfig = new SwerveConfiguration(new RobotMap.Mk3Map(), new Constants.Mk3Constants(), SparkMaxDriveMotor::new, TalonSRXTurnMotorEncoder::new, null);
-        swerveDrive = new SwerveDrivetrain(swerveConfig);
-        swerveDrive.setDefaultCommand(new DriveSwerve());
-        swerveDrive.enableDebugMode();
-//        swerveDrive.addLimelight("limelight-front");
+        limitSwitch = new LimitSwitch(RobotMap.BuildABot.LIMIT_SWITCH_CHANNEL);
+
+        cimMotor = new CIMMotor(RobotMap.BuildABot.TALON_SRX_CAN_ID);
+        cimMotor.setDefaultCommand(new RunPercentJoystick());
 
         //These should be at or near the bottom
         oi = new OI();
@@ -80,6 +80,9 @@ public class Robot extends TimedRobot {
         CommandScheduler.getInstance().run();
 
         ui.update();
+
+        System.out.println("Limit Switch: " + limitSwitch.getValue());
+        System.out.println("Pigeon Heading: " + pigeon.getCompassHeading());
 
     }
 

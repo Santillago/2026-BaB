@@ -51,5 +51,10 @@ public abstract class RobotMap {
         }
     }
 
-    public static final int PIGEON_ID = 9;
+    public static final class BuildABot {
+        public static final int LIMIT_SWITCH_CHANNEL = 9;
+        public static final int PIGEON_CAN_ID = 9;
+        public static final int TALON_SRX_CAN_ID = 10;
+    }
+
 }

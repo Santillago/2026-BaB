@@ -94,5 +94,15 @@ public final class Constants {
 
     public static final class BuildABot {
         public static final double CIM_MOTOR_PERCENT = 0.4;
+        public static final double NEO_MOTOR_VOLTS = 4.5;
+        public static final double NEO_MOTOR_POSITION_SETPOINT = 21;
+        public static final double SPARKMAX_POSITION_PID_kP = 0.05;
+        public static final double SPARKMAX_POSITION_PID_kI = 0.0;
+        public static final double SPARKMAX_POSITION_PID_kD = 0.0;
+        public static final double NEO_MOTOR_VELOCITY_SETPOINT_RPM = 1250;
+        public static final double SPARKMAX_VELOCITY_PID_kP = 0.05;
+        public static final double SPARKMAX_VELOCITY_PID_kI = 0.0;
+        public static final double SPARKMAX_VELOCITY_PID_kD = 0.0;
+
     }
 }

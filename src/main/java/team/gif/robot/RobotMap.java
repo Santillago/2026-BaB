@@ -55,6 +55,8 @@ public abstract class RobotMap {
         public static final int LIMIT_SWITCH_CHANNEL = 9;
         public static final int PIGEON_CAN_ID = 9;
         public static final int TALON_SRX_CAN_ID = 10;
+        public static final int SPARKMAX_CAN_ID = 45;
+        public static final int PCM_CAN_ID = 0;
     }
 
 }

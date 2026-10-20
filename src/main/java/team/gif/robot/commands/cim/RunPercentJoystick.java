@@ -18,7 +18,7 @@ public class RunPercentJoystick extends Command {
     @Override
     public void execute() {
         double percent = -Robot.oi.driver.getLeftY();
-        Robot.cimMotor.runPercent(percent);
+        Robot.cimMotor.setPercent(percent);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

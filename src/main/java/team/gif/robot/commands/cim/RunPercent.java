@@ -20,7 +20,7 @@ public class RunPercent extends Command {
     // Called every time the scheduler runs (~20ms) while the command is scheduled
     @Override
     public void execute() {
-        Robot.cimMotor.runPercent(percent);
+        Robot.cimMotor.setPercent(percent);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

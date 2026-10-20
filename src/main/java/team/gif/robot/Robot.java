@@ -7,10 +7,14 @@ package team.gif.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import team.gif.robot.commands.ArcadeDrive;
 import team.gif.robot.commands.cim.RunPercent;
 import team.gif.robot.commands.cim.RunPercentJoystick;
 import team.gif.robot.subsystems.CIMMotor;
+import team.gif.robot.subsystems.DiffDrive;
+import team.gif.robot.subsystems.DoubleSolenoids;
 import team.gif.robot.subsystems.LimitSwitch;
+import team.gif.robot.subsystems.NEOMotor;
 import team.gif.robot.subsystems.drivers.Pigeon;
 import team.gif.robot.subsystems.drivers.swerve.utilities.SwerveConfiguration;
 import team.gif.robot.subsystems.drivers.swerve.SwerveDrivetrain;
@@ -34,7 +38,13 @@ public class Robot extends TimedRobot {
 
     public static LimitSwitch limitSwitch;
 
+    public static DoubleSolenoids doubleSolenoids;
+
     public static CIMMotor cimMotor;
+
+    public static NEOMotor neoMotor;
+
+    public static DiffDrive drive;
 
     public static UI ui;
 
@@ -55,8 +65,15 @@ public class Robot extends TimedRobot {
 
         limitSwitch = new LimitSwitch(RobotMap.BuildABot.LIMIT_SWITCH_CHANNEL);
 
+        doubleSolenoids = new DoubleSolenoids(RobotMap.BuildABot.PCM_CAN_ID);
+
         cimMotor = new CIMMotor(RobotMap.BuildABot.TALON_SRX_CAN_ID);
         cimMotor.setDefaultCommand(new RunPercentJoystick());
+
+        neoMotor = new NEOMotor(RobotMap.BuildABot.SPARKMAX_CAN_ID);
+
+        drive = new DiffDrive();
+        drive.setDefaultCommand(new ArcadeDrive());
 
         //These should be at or near the bottom
         oi = new OI();

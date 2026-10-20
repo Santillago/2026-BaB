@@ -7,6 +7,7 @@ package team.gif.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import team.gif.robot.Robot;
 
 public class CIMMotor extends SubsystemBase {
 
@@ -16,7 +17,10 @@ public class CIMMotor extends SubsystemBase {
         cimMotor = new TalonSRX(canID);
     }
 
-    public void runPercent(double percent) {
+    public void setPercent(double percent) {
+        if(Robot.limitSwitch.getValue()) {
+            percent/=2;
+        }
         cimMotor.set(ControlMode.PercentOutput, percent);
     }
 

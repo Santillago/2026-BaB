@@ -1,10 +1,14 @@
 package team.gif.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import team.gif.robot.commands.PrintTimestamp;
 import team.gif.robot.commands.cim.RunPercent;
+import team.gif.robot.commands.neo.RunVolts;
+import team.gif.robot.commands.neo.SetPosition;
+import team.gif.robot.commands.neo.SetVelocity;
 
 public class OI {
     /*
@@ -95,6 +99,10 @@ public class OI {
         dA.onTrue(new PrintTimestamp());
         dX.whileTrue(new RunPercent(Constants.BuildABot.CIM_MOTOR_PERCENT));
         dY.whileTrue(new RunPercent(-Constants.BuildABot.CIM_MOTOR_PERCENT));
+        dB.whileTrue(new RunVolts(Constants.BuildABot.NEO_MOTOR_VOLTS));
+        dLTrigger.onTrue(new SetPosition(Constants.BuildABot.NEO_MOTOR_POSITION_SETPOINT));
+        dRTrigger.whileTrue(new SetVelocity(Constants.BuildABot.NEO_MOTOR_VELOCITY_SETPOINT_RPM));
+        dLBump.onTrue(new InstantCommand(Robot.doubleSolenoids::toggle));
 
     }
 }

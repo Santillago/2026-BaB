@@ -23,7 +23,9 @@ public class UI {
      *     SmartDashboard.putString("Elevator", String.format("%11.2f", Elevator.getPosition());
      */
     public void update() {
-        //Example
-        //SmartDashboard.putNumber("Climber Position", Robot.elevator.getPosition())
+        SmartDashboard.putBoolean("Limit Switch", Robot.limitSwitch.getValue());
+        SmartDashboard.putNumber("Pigeon Heading", Robot.pigeon.getCompassHeading());
+        SmartDashboard.putNumber("NEO Position", Robot.neoMotor.getPosition());
+        SmartDashboard.putNumber("NEO RPM", Robot.neoMotor.getVelocity());
     }
 }

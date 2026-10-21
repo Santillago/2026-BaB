@@ -10,7 +10,7 @@ public class ArcadeDrive extends Command {
 
     public ArcadeDrive() {
         super();
-        addRequirements(Robot.drive);
+//        addRequirements(Robot.drive);
     }
 
     // Called when the command is initially scheduled.
@@ -23,7 +23,7 @@ public class ArcadeDrive extends Command {
         speed = Robot.oi.driver.getLeftY();
         turn = Robot.oi.driver.getRightX();
 
-        Robot.drive.arcadeDrive(-speed, -turn);
+//        Robot.drive.arcadeDrive(-speed, -turn);
     }
 
     // Return true when the command should end, false if it should continue. Runs every ~20ms.

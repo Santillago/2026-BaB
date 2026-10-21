@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
 
     public static NEOMotor neoMotor;
 
-    public static DiffDrive drive;
+//    public static DiffDrive drive;
 
     public static UI ui;
 
@@ -72,8 +72,8 @@ public class Robot extends TimedRobot {
 
         neoMotor = new NEOMotor(RobotMap.BuildABot.SPARKMAX_CAN_ID);
 
-        drive = new DiffDrive();
-        drive.setDefaultCommand(new ArcadeDrive());
+//        drive = new DiffDrive();
+//        drive.setDefaultCommand(new ArcadeDrive());
 
         //These should be at or near the bottom
         oi = new OI();
